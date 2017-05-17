@@ -7,13 +7,31 @@
         cd ~/work/meeseeks
 2. Create python virtual environment
 
-        virtualenv -p /usr/bin/python3.6 env
+        python3.6 -m venv env
 3. Activate python virtual environment
 
         source env/bin/activate
 4. Install required packages
 
         pip install -r requirements.txt
+
+## Configuration
+Sensitive data should not be committed to the git repo. Instead it should be
+passed in as environment variables or read from files created by
+configuration management.
+
+### Environment variables
+* `MEESEEKS_AUTH_TOKEN` - When set, requires that a matching `auth_token`
+string is sent as a query parameter for every request. Such requests should only
+transit over public networks using HTTPS.
+
+### phones.yaml
+Dictionary of names and phone numbers
+ex.
+
+    'Andy Clark': 530-555-0098
+    'Joe Schmo': 530-555-0032
+    'John Schmo': 530-555-0075
 
 ## Test Message
 Send a POST to https://localhost:8070/
@@ -30,7 +48,7 @@ Send a POST to https://localhost:8070/
                 },
                 "id": "00a3eb7f-fac5-496a-8d64-a9050c712ca1",
                 "mentions": [],
-                "message": "/phones",
+                "message": "/meeseeks",
                 "type": "message"
             },
             "room": {
@@ -40,7 +58,3 @@ Send a POST to https://localhost:8070/
         },
         "webhook_id": 578829
     }
-
-## Notes
-* Authentication is very simple, using ?auth_token= query parameter for
-requests. Requests should only transit over public networks using HTTPS.

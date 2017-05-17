@@ -1,0 +1,32 @@
+help_item_template: |
+  <li><strong>{example}</strong><br />
+  {description}</li>
+help_template: |
+  <img src="https://akimg0.ask.fm/assets2/038/151/203/072/normal/cartoons_mr_meeseeks.png" alt="I'm Mr. Meeseeks" /><br />
+  <strong>Slash Commands</strong>
+  <ul>
+    {help_items}
+  </ul>
+message_routes:
+  "^/help":
+    callback: show_help
+    example: /help or /meeseeks
+    description: Show help
+  "^/meeseeks":
+    callback: show_help
+    example: /help or /meeseeks
+    description: Show help
+  "^/phones$":
+    callback: show_phones
+    example: /phones
+    description: List all phones
+  "^/phones (?P<name>[a-zA-Z ]+)$":
+    callback: show_phones
+    example: /phones <name>
+    description: List all phones, filtered by name or partial name
+phones_item_template: |
+  <li>{number} <strong>{name}</strong></li>
+phones_template: |
+  <ul>
+    {phones_items}
+  </ul>
