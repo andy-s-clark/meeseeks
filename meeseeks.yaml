@@ -2,19 +2,18 @@ help_item_template: |
   <li><strong>{example}</strong><br />
   {description}</li>
 help_template: |
-  <img src="https://akimg0.ask.fm/assets2/038/151/203/072/normal/cartoons_mr_meeseeks.png" alt="I'm Mr. Meeseeks" /><br />
-  <strong>Slash Commands</strong>
+  <img src="https://akimg0.ask.fm/assets2/038/151/203/072/normal/cartoons_mr_meeseeks.png" alt="I'm Mr. Meeseeks" />
   <ul>
     {help_items}
   </ul>
 message_routes:
   "^/help":
     callback: show_help
-    example: /help or /meeseeks
+    example: /help
     description: Show help
   "^/meeseeks":
     callback: show_help
-    example: /help or /meeseeks
+    example: /meeseeks
     description: Show help
   "^/phones$":
     callback: show_phones

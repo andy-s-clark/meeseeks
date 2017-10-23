@@ -85,13 +85,14 @@ class Meeseeks:
         phones = self._get_phones()
         try:
             name_to_match = match_result.group('name').lower()
-            filtered_phones = {k: v for k, v in phones.items() if k.lower().startswith(name_to_match)}
+            filtered_phones = {k: v for k, v in phones.items() if name_to_match in k.lower()}
             print(filtered_phones)
         except IndexError:
             filtered_phones = phones
         phones_items = ''
-        for name, number in filtered_phones.items():
+        for name, number in sorted(filtered_phones.items()):
             phones_items += self.__config['phones_item_template']\
                 .replace('{name}', name)\
                 .replace('{number}', number)
-        return self.show_message(message=self.__config['phones_template'].replace('{phones_items}', phones_items))
+        return self.show_message(message=self.__config['phones_template']
+                                 .replace('{phones_items}', phones_items))

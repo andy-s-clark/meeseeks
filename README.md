@@ -34,9 +34,13 @@ ex.
     'John Schmo': 530-555-0075
 
 ## Test Message
-Send a POST to https://localhost:8070/
+Send a POST to https://localhost:8070/webhook/
 
-    {
+    curl -X POST \
+    http://localhost:8070/webhook/ \
+    -H 'cache-control: no-cache' \
+    -H 'content-type: application/json' \
+    -d '{
         "event": "room_message",
         "item": {
             "message": {
@@ -48,7 +52,7 @@ Send a POST to https://localhost:8070/
                 },
                 "id": "00a3eb7f-fac5-496a-8d64-a9050c712ca1",
                 "mentions": [],
-                "message": "/meeseeks",
+                "message": "/help",
                 "type": "message"
             },
             "room": {
@@ -57,4 +61,4 @@ Send a POST to https://localhost:8070/
             }
         },
         "webhook_id": 578829
-    }
+    }'
